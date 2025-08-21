@@ -22,7 +22,7 @@
             android:text="Contact Name"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="#2E3440" />
+            android:textColor="#FFFFFF" />
 
         <TextView
             android:id="@+id/contactNumber"
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:text="+1234567890"
             android:textSize="14sp"
-            android:textColor="#5E81AC"
+            android:textColor="#80FFFFFF"
             android:layout_marginTop="2dp" />
     </LinearLayout>
 

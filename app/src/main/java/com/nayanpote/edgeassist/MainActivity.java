@@ -1,16 +1,28 @@
 package com.nayanpote.edgeassist;
 
+import static android.content.ContentValues.TAG;
+
 import android.Manifest;
+import android.animation.ObjectAnimator;
+import android.animation.TypeEvaluator;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -46,11 +58,13 @@ public class MainActivity extends AppCompatActivity {
     private MaterialCardView statusCard;
     private SharedPreferences prefs;
     private LinearLayout contactsListLayout;
-
+    private MaterialCardView logo_container;
     private ActivityResultLauncher<String[]> multiplePermissionsLauncher;
     private ActivityResultLauncher<Intent> overlayPermissionLauncher;
     private ActivityResultLauncher<Intent> writeSettingsLauncher;
     private ActivityResultLauncher<Intent> contactPickerLauncher;
+    private LinearLayout gradientOverlay;
+    private ObjectAnimator gradientAnimator;
 
     private List<SpeedDialContact> speedDialContacts = new ArrayList<>();
 
@@ -64,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
         initPermissionLaunchers();
         loadSpeedDialContacts();
         updateUI();
+        setupStatusBar();
+        setupGradientAnimation();
     }
 
     private void initViews() {
@@ -74,10 +90,15 @@ public class MainActivity extends AppCompatActivity {
         manageContactsBtn = findViewById(R.id.manageContactsBtn);
         phoneNumberEdit = findViewById(R.id.phoneNumberEdit);
         contactNameEdit = findViewById(R.id.contactNameEdit);
+        gradientOverlay = findViewById(R.id.gradientOverlay);
         statusText = findViewById(R.id.statusText);
         statusCard = findViewById(R.id.statusCard);
         savedContactsText = findViewById(R.id.savedContactsText);
         contactsListLayout = findViewById(R.id.contactsListLayout);
+        logo_container = findViewById(R.id.logo_container);
+
+
+        logo_container.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, developerZone.class)));
 
         serviceToggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
@@ -98,8 +119,40 @@ public class MainActivity extends AppCompatActivity {
         manageContactsBtn.setOnClickListener(v -> showManageContactsDialog());
     }
 
+    private void setupGradientAnimation() {
+        if (gradientOverlay != null) {
+            gradientOverlay.setBackgroundResource(R.drawable.gradient_background); // your XML file
+            Drawable background = gradientOverlay.getBackground();
+            if (background instanceof AnimationDrawable) {
+                AnimationDrawable animationDrawable = (AnimationDrawable) background;
+                animationDrawable.setEnterFadeDuration(2000);
+                animationDrawable.setExitFadeDuration(2000);
+                animationDrawable.start();
+            }
+        }
+    }
+
+
+
     private void initPreferences() {
         prefs = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
+    }
+
+    private void setupStatusBar() {
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                getWindow().setStatusBarColor(Color.TRANSPARENT);
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                getWindow().setDecorFitsSystemWindows(false);
+            } else {
+                getWindow().getDecorView().setSystemUiVisibility(
+                        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                );
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Error setting up status bar", e);
+        }
     }
 
     private void saveSpeedDialContact() {

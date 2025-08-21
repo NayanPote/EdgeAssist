@@ -1,66 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
+<!-- Base application theme. -->
+<style name="Base.Theme.EdgeAssist" parent="Theme.Material3.DayNight.NoActionBar">
+    <!-- Customize your light theme here. -->
+    <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+</style>
 
-    <!-- Base Dark Theme -->
-    <style name="Base.Theme.EdgeAssist" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Primary Brand Colors -->
-        <item name="colorPrimary">@color/primary_color</item>
-        <item name="colorOnPrimary">@color/white</item>
-
-        <!-- Secondary Colors -->
-        <item name="colorSecondary">@color/secondary_color</item>
-        <item name="colorOnSecondary">@color/white</item>
-
-        <!-- Background Colors -->
-        <item name="android:colorBackground">@color/background_color</item>
-        <item name="colorSurface">@color/surface_color</item>
-        <item name="colorOnSurface">@color/primary_text</item>
-        <item name="colorOnBackground">@color/primary_text</item>
-
-        <!-- Text Colors -->
-        <item name="android:textColorPrimary">@color/primary_text</item>
-        <item name="android:textColorSecondary">@color/secondary_text</item>
-
-        <!-- Status Bar -->
-        <item name="android:statusBarColor">@color/background_color</item>
-        <item name="android:navigationBarColor">@color/background_color</item>
-        <item name="android:windowLightStatusBar">false</item>
-
-        <!-- Window Properties -->
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-
-        <!-- Error Color -->
-        <item name="colorError">@color/error_color</item>
-        <item name="colorOnError">@color/white</item>
-    </style>
-
-    <!-- Main App Theme -->
-    <style name="Theme.EdgeAssist" parent="Base.Theme.EdgeAssist">
-        <item name="materialCardViewStyle">@style/Widget.EdgeAssist.Card</item>
-        <item name="materialButtonStyle">@style/Widget.EdgeAssist.Button</item>
-    </style>
-
-    <!-- Custom Card Style -->
-    <style name="Widget.EdgeAssist.Card" parent="Widget.Material3.CardView.Elevated">
-        <item name="cardBackgroundColor">@color/surface_color</item>
-        <item name="cardCornerRadius">16dp</item>
-        <item name="cardElevation">8dp</item>
-    </style>
-
-    <!-- Premium Button Style -->
-    <style name="Widget.EdgeAssist.Button" parent="Widget.Material3.Button">
-        <item name="android:textColor">@color/white</item>
-        <item name="backgroundTint">@color/primary_color</item>
-        <item name="cornerRadius">12dp</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <!-- Outlined Button Style -->
-    <style name="Widget.EdgeAssist.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
-        <item name="android:textColor">@color/primary_color</item>
-        <item name="strokeColor">@color/primary_color</item>
-        <item name="strokeWidth">2dp</item>
-        <item name="cornerRadius">12dp</item>
-    </style>
-
+<style name="Theme.EdgeAssist" parent="Base.Theme.EdgeAssist" />
 </resources>

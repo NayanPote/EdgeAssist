@@ -21,7 +21,7 @@
         android:layout_gravity="center"
         app:cardCornerRadius="30dp"
         app:cardElevation="12dp"
-        app:cardBackgroundColor="#5E81AC">
+        app:cardBackgroundColor="#000000">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -32,37 +32,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/floating_button_gradient"
+                android:backgroundTint="@color/black"
                 android:alpha="0.3"/>
 
             <!-- Main icon -->
             <ImageView
                 android:id="@+id/mainIcon"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_centerInParent="true"
-                android:src="@drawable/ic_edge_assist"
+                android:src="@drawable/logo"
                 app:tint="#FFFFFF"
                 android:alpha="0.9" />
 
-            <!-- Ring indicator for breathing -->
-            <View
-                android:id="@+id/breathingRing"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/breathing_ring"
-                android:alpha="0" />
-
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
-
-    <!-- Edge indicator line -->
-    <View
-        android:id="@+id/edgeIndicator"
-        android:layout_width="4dp"
-        android:layout_height="32dp"
-        android:layout_gravity="start|center_vertical"
-        android:layout_marginStart="2dp"
-        android:background="@drawable/edge_indicator_gradient"
-        android:alpha="0.8" />
 
 </FrameLayout>

@@ -1,9 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient
-        android:angle="135"
-        android:startColor="@color/background_color"
-        android:centerColor="@color/background_secondary"
-        android:endColor="@color/surface_color"
-        android:type="linear" />
-</shape>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+
+    <item android:duration="2500">
+        <shape>
+            <gradient
+                android:startColor="#3C4A49"
+                android:centerColor="#4A7F82"
+                android:endColor="#647574"
+                android:angle="45" />
+        </shape>
+    </item>
+
+    <item android:duration="2500">
+        <shape>
+            <gradient
+                android:startColor="#445856"
+                android:centerColor="#4E8F89"
+                android:endColor="#667A7A"
+                android:angle="90" />
+        </shape>
+    </item>
+
+    <item android:duration="2500">
+        <shape>
+            <gradient
+                android:startColor="#4A5D5B"
+                android:centerColor="#3F8E84"
+                android:endColor="#748582"
+                android:angle="135" />
+        </shape>
+    </item>
+
+    <item android:duration="2500">
+        <shape>
+            <gradient
+                android:startColor="#364B4A"
+                android:centerColor="#4A9B97"
+                android:endColor="#60706F"
+                android:angle="180" />
+        </shape>
+    </item>
+
+    <item android:duration="2500">
+        <shape>
+            <gradient
+                android:startColor="#455857"
+                android:centerColor="#3F908C"
+                android:endColor="#687877"
+                android:angle="225" />
+        </shape>
+    </item>
+
+    <item android:duration="2500">
+        <shape>
+            <gradient
+                android:startColor="#3F4F4E"
+                android:centerColor="#44978F"
+                android:endColor="#728280"
+                android:angle="315" />
+        </shape>
+    </item>
+
+</animation-list>

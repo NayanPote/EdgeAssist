@@ -3,37 +3,68 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
+    android:forceDarkAllowed="false"
     android:fillViewport="true">
 
     <LinearLayout
+        android:id="@+id/gradientOverlay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:background="@drawable/gradient_background"
+        android:padding="16dp">
 
         <!-- Header Section -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="35dp"
             android:layout_marginBottom="32dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Edge Assist"
-                android:textSize="28sp"
-                android:textStyle="bold"
-                android:textColor="#2E3440" />
+            <!-- App Logo -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/logo_container"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_marginEnd="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="8dp"
+                app:cardBackgroundColor="#000000">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/logo"
+                    app:tint="#FFFFFF" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Floating controls for volume and speed dial"
-                android:textSize="16sp"
-                android:textColor="#5E81AC"
-                android:layout_marginTop="4dp" />
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="EdgeAssist"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="sans-serif-medium" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Floating controls for volume and speed dial"
+                    android:textSize="16sp"
+                    android:textColor="#B3FFFFFF"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="sans-serif-light" />
+            </LinearLayout>
         </LinearLayout>
 
         <!-- Status Card -->
@@ -42,15 +73,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="8dp"
-            app:cardBackgroundColor="#FFFFFF">
+            app:cardCornerRadius="20dp"
+            app:cardElevation="12dp"
+            app:cardBackgroundColor="#2E4040">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="20dp"
+                android:padding="24dp"
+                android:backgroundTint="@color/background_primary"
                 android:gravity="center_vertical">
 
                 <LinearLayout
@@ -62,26 +94,32 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Status"
+                        android:text="Service Status"
                         android:textSize="14sp"
-                        android:textColor="#5E81AC" />
+                        android:textColor="#80FFFFFF"
+                        android:textAllCaps="true"
+                        android:letterSpacing="0.1"
+                        android:fontFamily="sans-serif-medium" />
 
                     <TextView
                         android:id="@+id/statusText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Service Inactive"
-                        android:textSize="18sp"
+                        android:textSize="20sp"
                         android:textStyle="bold"
-                        android:textColor="#2E3440" />
+                        android:textColor="#FFFFFF"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="sans-serif-medium" />
                 </LinearLayout>
 
                 <com.google.android.material.switchmaterial.SwitchMaterial
                     android:id="@+id/serviceToggle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:thumbTint="#A3BE8C"
-                    app:trackTint="#ECEFF4" />
+                    app:thumbTint="#595959"
+                    app:trackTint="#4D505050"
+                    app:trackTintMode="src_atop" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -89,108 +127,139 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/permissionBtn"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="64dp"
             android:text="Grant Required Permissions"
             android:textSize="16sp"
             android:textStyle="bold"
             android:layout_marginBottom="24dp"
-            android:backgroundTint="#EBCB8B"
-            android:textColor="#2E3440"
-            app:cornerRadius="12dp"
-            style="@style/Widget.Material3.Button" />
+            android:backgroundTint="#09989D"
+            android:textColor="#FFFFFF"
+            app:cornerRadius="16dp"
+            app:elevation="8dp"
+            android:fontFamily="sans-serif-medium"/>
 
         <!-- Speed Dial Setup -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            app:cardBackgroundColor="#FFFFFF">
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="#2E4040">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:padding="24dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Add Speed Dial Contact"
-                    android:textSize="18sp"
+                    android:text="Speed Dial Setup"
+                    android:textSize="20sp"
                     android:textStyle="bold"
-                    android:textColor="#2E3440"
-                    android:layout_marginBottom="16dp" />
+                    android:textColor="#FFFFFF"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="sans-serif-medium" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Add contacts for long press speed dial"
                     android:textSize="14sp"
-                    android:textColor="#5E81AC"
-                    android:layout_marginBottom="12dp" />
+                    android:textColor="#B3FFFFFF"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="sans-serif-light" />
 
-                <EditText
-                    android:id="@+id/contactNameEdit"
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:hint="Contact name"
-                    android:inputType="textPersonName"
-                    android:background="@drawable/edit_text_background"
-                    android:padding="12dp"
-                    android:layout_marginBottom="8dp" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    app:boxBackgroundMode="filled"
+                    app:boxBackgroundColor="#1A00D4FF"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:hintTextColor="#FFFFFF"
+                    app:boxStrokeColor="#1E2A2C"
+                    style="@style/Widget.Material3.TextInputLayout.FilledBox">
 
-                <EditText
-                    android:id="@+id/phoneNumberEdit"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/contactNameEdit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Contact Name"
+                        android:inputType="textPersonName"
+                        android:textColor="#000000"
+                        android:textColorHint="#80FFFFFF" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:hint="Phone number"
-                    android:inputType="phone"
-                    android:background="@drawable/edit_text_background"
-                    android:padding="12dp"
-                    android:layout_marginBottom="12dp" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    app:boxBackgroundMode="filled"
+                    app:boxBackgroundColor="#1A00D4FF"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:hintTextColor="#FFFFFF"
+                    app:boxStrokeColor="#1E2A2C"
+                    style="@style/Widget.Material3.TextInputLayout.FilledBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/phoneNumberEdit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Phone Number"
+                        android:inputType="phone"
+                        android:textColor="#000000"
+                        android:textColorHint="#80FFFFFF" />
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="12dp">
+                    android:layout_marginBottom="16dp">
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/selectContactBtn"
                         android:layout_width="0dp"
-                        android:layout_height="48dp"
+                        android:layout_height="52dp"
                         android:layout_weight="1"
                         android:text="Select Contact"
-                        android:backgroundTint="#88C0D0"
+                        android:backgroundTint="#09989D"
                         android:textColor="#FFFFFF"
                         android:layout_marginEnd="8dp"
-                        app:cornerRadius="8dp"
-                        style="@style/Widget.Material3.Button" />
+                        app:cornerRadius="12dp"
+                        android:fontFamily="sans-serif-medium"/>
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/saveContactBtn"
                         android:layout_width="0dp"
-                        android:layout_height="48dp"
+                        android:layout_height="52dp"
                         android:layout_weight="1"
                         android:text="Save"
-                        android:backgroundTint="#A3BE8C"
+                        android:backgroundTint="#09989D"
                         android:textColor="#FFFFFF"
                         android:layout_marginStart="8dp"
-                        app:cornerRadius="8dp"
-                        style="@style/Widget.Material3.Button" />
+                        app:cornerRadius="12dp"
+                        android:fontFamily="sans-serif-medium" />
                 </LinearLayout>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/manageContactsBtn"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="52dp"
                     android:text="Manage Saved Contacts"
-                    android:backgroundTint="#D08770"
+                    android:backgroundTint="#077C80"
                     android:textColor="#FFFFFF"
-                    app:cornerRadius="8dp"
-                    style="@style/Widget.Material3.Button" />
+                    app:cornerRadius="12dp"
+                    android:fontFamily="sans-serif-medium" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -199,147 +268,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            app:cardBackgroundColor="#FFFFFF">
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="#2E4040">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:padding="24dp">
 
                 <TextView
                     android:id="@+id/savedContactsText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Saved Contacts"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
-                    android:textColor="#2E3440"
-                    android:layout_marginBottom="12dp" />
+                    android:textColor="#FFFFFF"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="sans-serif-medium" />
 
                 <LinearLayout
                     android:id="@+id/contactsListLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Instructions -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            app:cardBackgroundColor="#FFFFFF">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="How to Use"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="#2E3440"
-                    android:layout_marginBottom="16dp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="12dp">
-
-                    <View
-                        android:layout_width="8dp"
-                        android:layout_height="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="12dp"
-                        android:background="#A3BE8C"
-                        android:layout_gravity="top" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Single Tap: Volume Down"
-                        android:textSize="14sp"
-                        android:textColor="#2E3440" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="12dp">
-
-                    <View
-                        android:layout_width="8dp"
-                        android:layout_height="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="12dp"
-                        android:background="#5E81AC"
-                        android:layout_gravity="top" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Double Tap: Volume Up"
-                        android:textSize="14sp"
-                        android:textColor="#2E3440" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="12dp">
-
-                    <View
-                        android:layout_width="8dp"
-                        android:layout_height="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="12dp"
-                        android:background="#BF616A"
-                        android:layout_gravity="top" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Long Press: Open Speed Dial"
-                        android:textSize="14sp"
-                        android:textColor="#2E3440" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <View
-                        android:layout_width="8dp"
-                        android:layout_height="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="12dp"
-                        android:background="#EBCB8B"
-                        android:layout_gravity="top" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Auto-hide with breathing animation when unused"
-                        android:textSize="14sp"
-                        android:textColor="#2E3440" />
-                </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 

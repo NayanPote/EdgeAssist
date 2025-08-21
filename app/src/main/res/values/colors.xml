@@ -108,7 +108,7 @@
 
     <!-- Background Colors -->
     <color name="surface_color">#FFFFFF</color>
-    <color name="background_color">#F5F5F5</color>
+    <color name="background_color">#0F1419</color>
 
     <color name="background_primary">#2E3440</color>
     <color name="text_primary">#ECEFF4</color>
