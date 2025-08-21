@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:background="@drawable/contact_item_background"
+    android:layout_marginBottom="8dp"
+    android:gravity="center_vertical">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/contactName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contact Name"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#2E3440" />
+
+        <TextView
+            android:id="@+id/contactNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+1234567890"
+            android:textSize="14sp"
+            android:textColor="#5E81AC"
+            android:layout_marginTop="2dp" />
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/deleteBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:text="Delete"
+        android:textSize="12sp"
+        android:backgroundTint="#BF616A"
+        android:textColor="#FFFFFF"
+        app:cornerRadius="18dp"
+        style="@style/Widget.Material3.Button" />
+
+</LinearLayout>

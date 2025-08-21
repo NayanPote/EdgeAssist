@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Brand Colors -->
+    <color name="primary_dark">#4338CA</color>
+
+
+    <!-- Accent Colors -->
+    <color name="accent_pink">#EC4899</color>
+    <color name="accent_orange">#F97316</color>
+    <color name="accent_purple">#A855F7</color>
+
+    <!-- Status Colors -->
+    <color name="info_color">#3B82F6</color>
+
+    <!-- Background Colors - Dark Theme -->
+    <color name="background_secondary">#1A1B3E</color>
+    <color name="card_background">#343478</color>
+
+    <!-- Menu & Overlay Colors -->
+    <color name="menu_background">#1E1E3F</color>
+    <color name="menu_background_overlay">#000000</color>
+    <color name="menu_item_background">#2A2B5C</color>
+    <color name="overlay_background">#CC000000</color>
+    <color name="blur_overlay">#80000000</color>
+
+    <!-- Text Colors -->
+    <color name="disabled_text">#475569</color>
+
+    <!-- Interactive States -->
+    <color name="hover_overlay">#1AFFFFFF</color>
+    <color name="focus_outline">#6366F1</color>
+
+    <!-- Gradient Colors -->
+    <color name="gradient_start">#6366F1</color>
+    <color name="gradient_middle">#8B5CF6</color>
+    <color name="gradient_end">#EC4899</color>
+
+    <!-- Button Gradients -->
+    <color name="button_gradient_start">#667EEA</color>
+    <color name="button_gradient_end">#764BA2</color>
+
+    <!-- Floating Button Colors -->
+    <color name="floating_bg_start">#6366F1</color>
+    <color name="floating_bg_end">#8B5CF6</color>
+    <color name="floating_glow">#4D6366F1</color>
+
+    <!-- Edge Indicator -->
+    <color name="edge_indicator_start">#6366F1</color>
+    <color name="edge_indicator_end">#00FFFFFF</color>
+
+    <!-- Standard Colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="semi_transparent">#80000000</color>
+
+    <!-- Light Theme Colors (for future use) -->
+    <color name="light_background">#F8FAFC</color>
+    <color name="light_surface">#FFFFFF</color>
+    <color name="light_primary_text">#1E293B</color>
+    <color name="light_secondary_text">#475569</color>
+
+    <!-- Primary Colors -->
+    <color name="primary_variant">#1976D2</color>
+    <color name="primary_light">#64B5F6</color>
+
+    <!-- Secondary Colors -->
+    <color name="secondary_dark">#018786</color>
+    <color name="secondary_light">#4DB6AC</color>
+
+
+    <!-- Background Colors -->
+    <color name="surface_variant">#2C2C2C</color>
+
+    <!-- Text Colors -->
+    <color name="tertiary_text">#80FFFFFF</color>
+    <color name="hint_text">#61FFFFFF</color>
+
+
+    <!-- Interactive Colors -->
+    <color name="ripple_color">#1AFFFFFF</color>
+    <color name="pressed_overlay">#1AFFFFFF</color>
+
+    <!-- Light Theme Colors -->
+    <color name="background_color_light">#FAFAFA</color>
+    <color name="surface_color_light">#FFFFFF</color>
+    <color name="surface_variant_light">#F5F5F5</color>
+    <color name="primary_text_light">#212121</color>
+    <color name="secondary_text_light">#757575</color>
+    <color name="tertiary_text_light">#9E9E9E</color>
+    <color name="hint_text_light">#BDBDBD</color>
+    <color name="ripple_color_light">#1A000000</color>
+
+    <!-- Nordic Color Scheme -->
+    <color name="primary_color">#5E81AC</color>
+    <color name="secondary_color">#88C0D0</color>
+    <color name="accent_color">#A3BE8C</color>
+
+    <!-- Status Colors -->
+    <color name="success_color">#A3BE8C</color>
+    <color name="warning_color">#EBCB8B</color>
+    <color name="error_color">#BF616A</color>
+    <color name="inactive_color">#D8DEE9</color>
+
+    <!-- Text Colors -->
+    <color name="primary_text">#2E3440</color>
+    <color name="secondary_text">#5E81AC</color>
+
+    <!-- Background Colors -->
+    <color name="surface_color">#FFFFFF</color>
+    <color name="background_color">#F5F5F5</color>
+
+    <color name="background_primary">#2E3440</color>
+    <color name="text_primary">#ECEFF4</color>
+    <color name="text_secondary">#D8DEE9</color>
+    <color name="accent_green">#A3BE8C</color>
+    <color name="accent_red">#BF616A</color>
+</resources>
