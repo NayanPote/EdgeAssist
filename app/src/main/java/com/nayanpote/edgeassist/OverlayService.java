@@ -46,7 +46,7 @@ public class OverlayService extends Service {
 
     private boolean isDragging = false;
     private boolean isVisible = true;
-    private boolean isLongPressing = false; // New flag to prevent volume action during long press
+    private boolean isLongPressing = false; // New flag to prevent other actions during long press
     private float initialX, initialY;
     private float initialTouchX, initialTouchY;
 
@@ -183,14 +183,14 @@ public class OverlayService extends Service {
                         // Use handler to detect single vs double tap
                         hideHandler.postDelayed(() -> {
                             if (tapCount == 1 && !isLongPressing) {
-                                // Single tap - Volume down (only if not long press)
-                                Log.d(TAG, "Single tap - Volume down");
-                                hardwareController.volumeDown();
+                                // Single tap - Open Control Panel
+                                Log.d(TAG, "Single tap - Opening Control Panel");
+                                hardwareController.openControlPanel();
                                 vibrateFeedback();
                             } else if (tapCount == 2 && !isLongPressing) {
-                                // Double tap - Volume up (only if not long press)
-                                Log.d(TAG, "Double tap - Volume up");
-                                hardwareController.volumeUp();
+                                // Double tap - Open Volume Control
+                                Log.d(TAG, "Double tap - Opening Volume Control");
+                                hardwareController.openVolumeControl();
                                 vibrateFeedback();
                             }
                             tapCount = 0;
@@ -212,7 +212,7 @@ public class OverlayService extends Service {
         @Override
         public void onLongPress(MotionEvent e) {
             if (!isDragging) {
-                // Set flag to prevent volume action
+                // Set flag to prevent other actions
                 isLongPressing = true;
 
                 // Long press - Speed dial
