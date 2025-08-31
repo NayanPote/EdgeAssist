@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.nayanpote.edgeassist">
 
-
     <!-- Required permissions -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
@@ -12,8 +11,10 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <!-- For auto-start after app update -->
     <uses-permission android:name="android.permission.RECEIVE_MY_PACKAGE_REPLACED" />
@@ -22,31 +23,30 @@
     <uses-permission android:name="android.permission.EXPAND_STATUS_BAR"
         tools:ignore="ProtectedPermissions" />
 
+    <!-- Storage permissions with proper Android 13+ handling -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+
+    <!-- For Android 11+ (optional, only if you need broader file access) -->
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+
     <!-- Required Permissions -->
     <uses-feature
         android:name="android.hardware.telephony"
         android:required="false" />
 
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission android:name="android. permission. FOREGROUND_SERVICE_SPECIAL_USE]" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <!-- Added permissions for file sharing -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="28" />
-    <!-- For Android 11+ (optional, only if you need broader file access) -->
-    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
-        tools:ignore="ScopedStorage" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Theme.EdgeAssist">
+        android:theme="@style/Theme.EdgeAssist"
+        android:exported="false">
 
         <!-- Main Activity -->
         <activity
@@ -59,8 +59,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".developerZone"
-            android:exported="false"/>
+        <activity
+            android:name=".developerZone"
+            android:exported="false" />
 
         <!-- Updated FileProvider configuration -->
         <provider
@@ -73,14 +74,18 @@
                 android:resource="@xml/file_provider_paths" />
         </provider>
 
-        <!-- Overlay Service -->
+        <!-- Overlay Service with proper foreground service configuration -->
         <service
             android:name=".OverlayService"
             android:enabled="true"
             android:exported="false"
-            android:foregroundServiceType="specialUse" />
+            android:foregroundServiceType="specialUse">
+            <meta-data
+                android:name="android.app.FOREGROUND_SERVICE_TYPE"
+                android:value="specialUse" />
+        </service>
 
-        <!-- Boot Receiver for auto-start -->
+        <!-- Boot Receiver for auto-start with Android 12+ compatibility -->
         <receiver
             android:name=".BootReceiver"
             android:enabled="true"
@@ -96,7 +101,22 @@
             </intent-filter>
         </receiver>
 
-
     </application>
+
+    <!-- Queries for Android 11+ package visibility - must be outside application tag -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.SEND" />
+            <data android:mimeType="*/*" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="tel" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="mailto" />
+        </intent>
+    </queries>
 
 </manifest>
